@@ -5,6 +5,8 @@ Finder Toolbar app to open the current directory in the Terminal.
 
  * It's written in objective-c, and uses the scripting bridge so it's *fast*.
  * It's also shell agnostic. Works equally well when your shell is `bash` or `fish` or `zsh`.
+ * **NEW**: Enhanced theme support - automatically uses your Terminal default profile
+ * **NEW**: Improved single window behavior with smart auto-close detection
 
 By Jay Tuley
 https://github.com/jbtule/cdto
@@ -13,25 +15,47 @@ https://github.com/jbtule/cdto
 
 Download [Latest cdto.zip](https://github.com/jbtule/cdto/releases/latest)
 
-
 To install "cd to ....app" copy to your Applications folder, and then from the applications folder ⌘ drag it into the Finder toolbar or drag from another finder window to toolbar being customized.
 
 To use, just click on the new button and instantly opens a new terminal window.
 
+### What's New:
+
+**Enhanced Theme Support**
+- Automatically detects and uses your Terminal default profile
+- No manual configuration needed - just works with your existing preferences
+- Reliable theme application with proper timing
+
+**Improved Window Management**
+- Fixed double Terminal window opening issue
+- Smart auto-close detection that preserves windows with actual work
+- Better handling of various Terminal startup states
+
+**Maintained Benefits**
+- Still fast (pure Objective-C with ScriptingBridge)
+- Still shell agnostic (works with bash, zsh, fish, etc.)
+- Fully backward compatible with existing settings
+
 ### Settings
 
-To turn on feature that identifies automatically opened  Terminal windows, and closes them when using *cd to*.
+**Enhanced Auto-Close (Recommended)**
+
+To turn on the improved auto-close feature that intelligently closes unused Terminal windows:
 
 ```bash
 defaults write name.tuley.jay.cd-to cdto-close-default-window -bool true
 ```
 
-To change the window scheme for Terminal Windows from default.
+**Custom Profile Override (Optional)**
 
-_Eg. if you wanted cd to windows to be "Red Sands"_
+By default, cdto automatically uses your Terminal default profile. To override with a specific profile:
 
 ```bash
-defaults write name.tuley.jay.cd-to cdto-new-window-setting -string "Red Sands"
+# Use a specific profile
+defaults write name.tuley.jay.cd-to cdto-new-window-setting -string "Pro"
+
+# Reset to automatic detection
+defaults delete name.tuley.jay.cd-to cdto-new-window-setting
 ```
 
 
